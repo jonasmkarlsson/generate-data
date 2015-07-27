@@ -58,7 +58,7 @@ public class Launcher {
             if (LOGGER.isDebugEnabled()) {
                 LOGGER.debug("Encountered exception while reading property file '" + Constants.PROPERTY_FILE + "':", e);
             }
-            System.out.println("Encountered exception while reading property file '" + Constants.PROPERTY_FILE + "': " + e);
+            LOGGER.info("Encountered exception while reading property file '" + Constants.PROPERTY_FILE + "'. See log file for more information.");
         }
         return prop;
     }
