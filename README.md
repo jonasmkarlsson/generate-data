@@ -7,11 +7,10 @@ Build with Apache Maven: `mvn clean install`. Executable file are `target/genera
 There exists two major types of columns: Simple and Sequence.
 
 ##Simple
-A simple column reads data from a text file that contains a collection of appropriated values. A random value are then fetched from that collection and added to the generated dataset. Today, only Swedish location are supported, except for  the column 'Company' where there is a mix of both Swedish and USA companies.
+A simple column reads data from a text file that contains a collection of appropriated values. A random value are then fetched from that collection and added to the generated dataset. Please note that today, only Swedish values are supported.
 
-###List if simple columns
-- Avatarurl - Get a epic (128x128 px) image URL, using the [ui Faces](http://uifaces.com) REST API. **NB!** Requires Internet connection, and the execution takes a little longer time due to the call REST call, in other word, be patient.   
-- Company - Companies of Sweden & USA.
+###List if simple columns   
+- Company - Companies of Sweden.
 - Firstname - First names of Sweden.
 - Lastname - Last names of Sweden.
 - Location - Location/Cities of Sweden.
