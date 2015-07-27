@@ -25,7 +25,7 @@ public class Constants {
 
     // Help section...
     public static final String HELP_LINES = "Number of rows to generate. Default are '" + DEFAULT_NUMBER_OF_LINES + "'.";
-    public static final String HELP_FIELDS = "Type of field(s) to generate; company, firstname, lastname, location, street, sequence.";
+    public static final String HELP_FIELDS = "Type of field(s) to generate, least one must be specified; company, firstname, lastname, location, street, sequence.";
     public static final String HELP_DELIMITER = "Specify delimiter, only usable when several fields are combined. Default are '" + Constants.DEFAULT_DELIMITER + "'.";
     public static final String HELP_VERSION = "Display version information.";
     public static final String HELP_HELP = "Display help and usage";

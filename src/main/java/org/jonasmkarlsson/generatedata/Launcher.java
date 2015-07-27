@@ -106,7 +106,7 @@ public class Launcher {
         if (commandLine.hasOption(Constants.OPTIONS_VERSION[0]) || commandLine.hasOption(Constants.OPTIONS_VERSION[1])) {
             System.out.println(application);
         } else {
-            printHelp(constructGnuOptions(), 120, "Help GNU", "End of GNU Help", 5, 3, true);
+            printHelp(constructGnuOptions(), 145, "Help GNU", "End of GNU Help", 5, 3, true);
         }
     }
 
@@ -129,7 +129,7 @@ public class Launcher {
         gnuOptions.addOption(Constants.OPTIONS_LINES[0], Constants.OPTIONS_LINES[1], true, Constants.HELP_LINES);
         gnuOptions.addOption(Constants.OPTIONS_DELIMITER[0], Constants.OPTIONS_DELIMITER[1], true, Constants.HELP_DELIMITER);
 
-        Option option = new Option(Constants.OPTIONS_FIELD[0], Constants.OPTIONS_FIELD[1], false, Constants.HELP_FIELDS);
+        Option option = new Option(Constants.OPTIONS_FIELD[0], Constants.OPTIONS_FIELD[1], true, Constants.HELP_FIELDS);
         option.setArgs(Constants.MAX_NUMBER_OF_ALLOWED_FIELDS);
         gnuOptions.addOption(option);
 
