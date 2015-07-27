@@ -48,17 +48,17 @@ public class Launcher {
         }
     }
 
+    @SuppressWarnings("all")
     private Properties readProperties() {
-        final String PROPERTIES_FILE = "generate.properties";
         Properties prop = new Properties();
-        InputStream stream = this.getClass().getResourceAsStream(PROPERTIES_FILE);
+        InputStream stream = this.getClass().getResourceAsStream(Constants.PROPERTY_FILE);
         try {
             prop.load(stream);
         } catch (IOException e) {
             if (LOGGER.isDebugEnabled()) {
-                LOGGER.debug("Encountered exception while reading property file '" + PROPERTIES_FILE + "':", e);
+                LOGGER.debug("Encountered exception while reading property file '" + Constants.PROPERTY_FILE + "':", e);
             }
-            System.out.println("Encountered exception while reading property file '" + PROPERTIES_FILE + "': " + e);
+            System.out.println("Encountered exception while reading property file '" + Constants.PROPERTY_FILE + "': " + e);
         }
         return prop;
     }

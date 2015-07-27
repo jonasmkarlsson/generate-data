@@ -7,6 +7,7 @@ public class Constants {
     public static final String PROPERTY_COMMAND = "command";
     public static final String PROPERTY_NAME = "name";
     public static final String PROPERTY_VERSION = "version";
+    public static final String PROPERTY_FILE = "generate.properties";
 
     // Default settings...
     public static final int DEFAULT_NUMBER_OF_LINES = 10;
