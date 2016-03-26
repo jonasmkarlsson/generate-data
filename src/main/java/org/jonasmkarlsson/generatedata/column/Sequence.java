@@ -41,7 +41,7 @@ public class Sequence extends AbstractColumn {
     private static final String AVAILABLE_CHARACTER = "abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789-+(){}[]";
     private static final String REGEXP_FOR_HARD_AND_CURLY_BRACKETS = "^(\\[.*\\])\\{(\\d*)\\}$";
 
-    private Map<Integer, SequenceData> sequenceDataMap = new HashMap<Integer, SequenceData>();
+    private Map<Integer, SequenceData> sequenceDataMap = new HashMap<>();
 
     public Sequence(final String parameter) {
         super(parameter);
@@ -67,9 +67,9 @@ public class Sequence extends AbstractColumn {
      */
     private void initSequenceData() {
         int groupNumber = 0;
-        int endIndex = 0;
+        int endIndex;
         for (int startIndex = 0; startIndex < parameter.length(); startIndex = endIndex + 1) {
-            String regExp = "";
+            String regExp;
             int numberOfTimes = 1;
             if (parameter.charAt(startIndex) == REGEXP_ESCAPE_CHARACTER) {
                 endIndex = findEscapeCharacter(startIndex + 1);

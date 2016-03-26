@@ -18,10 +18,10 @@ public class Constants {
     public static final int MAX_NUMBER_OF_ALLOWED_FIELDS = 100;
 
     // Options section...
-    public static final String[] OPTIONS_LINES = { "n", "lines" };
-    public static final String[] OPTIONS_FIELD = { "f", "field" };
-    public static final String[] OPTIONS_DELIMITER = { "d", "delimiter" };
-    public static final String[] OPTIONS_VERSION = { "v", "version" };
+    private static final String[] OPTIONS_LINES = { "n", "lines" };
+    private static final String[] OPTIONS_FIELD = { "f", "field" };
+    private static final String[] OPTIONS_DELIMITER = { "d", "delimiter" };
+    private static final String[] OPTIONS_VERSION = { "v", "version" };
 
     // Help section...
     public static final String HELP_LINES = "Number of rows to generate. Default are '" + DEFAULT_NUMBER_OF_LINES + "'.";
@@ -34,4 +34,32 @@ public class Constants {
         super();
     }
 
+	/**
+	 * @return the optionsLines
+	 */
+	public static String[] getOptionsLines() {
+		return OPTIONS_LINES;
+	}
+
+	/**
+	 * @return the optionsField
+	 */
+	public static String[] getOptionsField() {
+		return OPTIONS_FIELD;
+	}
+
+	/**
+	 * @return the optionsDelimiter
+	 */
+	public static String[] getOptionsDelimiter() {
+		return OPTIONS_DELIMITER;
+	}
+
+	/**
+	 * @return the optionsVersion
+	 */
+	public static String[] getOptionsVersion() {
+		return OPTIONS_VERSION;
+	}
+    
 }
