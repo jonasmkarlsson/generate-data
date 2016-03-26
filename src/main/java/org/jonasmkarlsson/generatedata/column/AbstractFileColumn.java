@@ -52,8 +52,8 @@ public abstract class AbstractFileColumn extends AbstractColumn {
      * @return array of Strings containing rows.
      */
     private String[] readLines(BufferedReader bufferedReader) throws IOException {
-        List<String> lines = new ArrayList<String>();
-        String line = "";
+        List<String> lines = new ArrayList<>();
+        String line;
         while ((line = bufferedReader.readLine()) != null) {
             if (!line.startsWith(FILE_COMMENT_STARTS_WITH_CHARACTER)) {
                 lines.add(line);

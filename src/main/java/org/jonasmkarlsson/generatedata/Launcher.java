@@ -72,7 +72,7 @@ public class Launcher {
         // Go through and get values, or default values, for each parameter...
         // Number of lines...
         int numberOfLines = Constants.DEFAULT_NUMBER_OF_LINES;
-        String numberOfLinesOptionValue = checkCommandLineForOption(Constants.OPTIONS_LINES, commandLine, Integer.toString(Constants.DEFAULT_NUMBER_OF_LINES));
+        String numberOfLinesOptionValue = checkCommandLineForOption(Constants.getOptionsLines(), commandLine, Integer.toString(Constants.DEFAULT_NUMBER_OF_LINES));
         try {
             numberOfLines = Integer.parseInt(numberOfLinesOptionValue);
         } catch (NumberFormatException nfe) {
@@ -82,10 +82,10 @@ public class Launcher {
         }
 
         // Delimiter...
-        String delimiterOptionValue = checkCommandLineForOption(Constants.OPTIONS_DELIMITER, commandLine, Constants.DEFAULT_DELIMITER);
+        String delimiterOptionValue = checkCommandLineForOption(Constants.getOptionsDelimiter(), commandLine, Constants.DEFAULT_DELIMITER);
 
         // Field...
-        String[] fieldOptionValues = checkCommandLineForFieldOptions(Constants.OPTIONS_FIELD, commandLine, Constants.DEFAULT_DELIMITER);
+        String[] fieldOptionValues = checkCommandLineForFieldOptions(Constants.getOptionsField(), commandLine, Constants.DEFAULT_DELIMITER);
 
         // Check if any field option value are given
         if (fieldOptionValues != null && fieldOptionValues.length > 0) {
@@ -103,7 +103,7 @@ public class Launcher {
 
     @SuppressWarnings("all")
     private void printOutOptions(CommandLine commandLine) {
-        if (commandLine.hasOption(Constants.OPTIONS_VERSION[0]) || commandLine.hasOption(Constants.OPTIONS_VERSION[1])) {
+        if (commandLine.hasOption(Constants.getOptionsVersion()[0]) || commandLine.hasOption(Constants.getOptionsVersion()[1])) {
             System.out.println(application);
         } else {
             printHelp(constructGnuOptions(), 145, "Help GNU", "End of GNU Help", 5, 3, true);
@@ -125,11 +125,11 @@ public class Launcher {
      */
     private Options constructGnuOptions() {
         final Options gnuOptions = new Options();
-        gnuOptions.addOption(Constants.OPTIONS_VERSION[0], Constants.OPTIONS_VERSION[1], false, Constants.HELP_VERSION);
-        gnuOptions.addOption(Constants.OPTIONS_LINES[0], Constants.OPTIONS_LINES[1], true, Constants.HELP_LINES);
-        gnuOptions.addOption(Constants.OPTIONS_DELIMITER[0], Constants.OPTIONS_DELIMITER[1], true, Constants.HELP_DELIMITER);
+        gnuOptions.addOption(Constants.getOptionsVersion()[0], Constants.getOptionsVersion()[1], false, Constants.HELP_VERSION);
+        gnuOptions.addOption(Constants.getOptionsLines()[0], Constants.getOptionsLines()[1], true, Constants.HELP_LINES);
+        gnuOptions.addOption(Constants.getOptionsDelimiter()[0], Constants.getOptionsDelimiter()[1], true, Constants.HELP_DELIMITER);
 
-        Option option = new Option(Constants.OPTIONS_FIELD[0], Constants.OPTIONS_FIELD[1], true, Constants.HELP_FIELDS);
+        Option option = new Option(Constants.getOptionsField()[0], Constants.getOptionsField()[1], true, Constants.HELP_FIELDS);
         option.setArgs(Constants.MAX_NUMBER_OF_ALLOWED_FIELDS);
         gnuOptions.addOption(option);
 
