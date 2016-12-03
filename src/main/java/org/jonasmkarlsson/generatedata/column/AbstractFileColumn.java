@@ -12,54 +12,69 @@ import org.apache.log4j.Logger;
 
 public abstract class AbstractFileColumn extends AbstractColumn {
 
-    private static final Logger LOGGER = Logger.getLogger(AbstractFileColumn.class);
-    private static final Random RANDOM = new Random();
-    private static final String FILE_COMMENT_STARTS_WITH_CHARACTER = "#";
+	private static final Logger LOGGER = Logger.getLogger(AbstractFileColumn.class);
+	private static final Random RANDOM = new Random();
+	private static final String FILE_COMMENT_STARTS_WITH_CHARACTER = "#";
 
-    private String[] fileLines = new String[0];
+	private String[] fileLines = new String[0];
 
-    public AbstractFileColumn(final String parameter) {
-        super(parameter);
-        init();
-    }
+	/**
+	 * Default constructor
+	 * 
+	 * @param parameter the parameter to be used
+	 */
+	public AbstractFileColumn(final String parameter) {
+		super(parameter);
+		init();
+	}
 
-    public abstract String getFilename();
+	/**
+	 * Gets the filename of the file
+	 * 
+	 * @return the filename
+	 */
+	public abstract String getFilename();
 
-    public void init() {
-        InputStream is = this.getClass().getResourceAsStream(getFilename());
-        BufferedReader bufferedReader = null;
-        try {
-            bufferedReader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-            this.fileLines = readLines(bufferedReader);
-            is.close();
-        } catch (NullPointerException npe) {
-            LOGGER.error(bufferedReader, npe);
-        } catch (IOException io) {
-            LOGGER.error(bufferedReader, io);
-        }
-    }
+	public void init() {
+		InputStream is = this.getClass().getResourceAsStream(getFilename());
+		BufferedReader bufferedReader = null;
+		try {
+			bufferedReader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+			this.fileLines = readLines(bufferedReader);
+			is.close();
+		} catch (NullPointerException npe) {
+			LOGGER.error(bufferedReader, npe);
+		} catch (IOException io) {
+			LOGGER.error(bufferedReader, io);
+		}
+	}
 
-    @Override
-    public String generate() {
-        int randomInt = RANDOM.nextInt(fileLines.length);
-        return fileLines[randomInt];
-    }
+	/**
+	 * Generates/gets the value from a random place in the array fileLines.
+	 * 
+	 * @return a String containing the value
+	 */
+	@Override
+	public String generate() {
+		int randomInt = RANDOM.nextInt(fileLines.length);
+		return fileLines[randomInt];
+	}
 
-    /**
-     * Reads a file row for row, and return an array of all rows in filename.
-     * 
-     * @param filename the filename to read
-     * @return array of Strings containing rows.
-     */
-    private String[] readLines(BufferedReader bufferedReader) throws IOException {
-        List<String> lines = new ArrayList<>();
-        String line;
-        while ((line = bufferedReader.readLine()) != null) {
-            if (!line.startsWith(FILE_COMMENT_STARTS_WITH_CHARACTER)) {
-                lines.add(line);
-            }
-        }
-        return lines.toArray(new String[lines.size()]);
-    }
+	/**
+	 * Reads a file row for row, and return an array of all rows in filename.
+	 * 
+	 * @param filename the filename to read
+	 * @return array of Strings containing rows.
+	 */
+	private String[] readLines(BufferedReader bufferedReader) throws IOException {
+		List<String> lines = new ArrayList<>();
+		String line;
+		while ((line = bufferedReader.readLine()) != null) {
+			if (!line.startsWith(FILE_COMMENT_STARTS_WITH_CHARACTER)) {
+				lines.add(line);
+			}
+		}
+		return lines.toArray(new String[lines.size()]);
+	}
 
 }

@@ -2,13 +2,23 @@ package org.jonasmkarlsson.generatedata.column;
 
 public class Lastname extends AbstractFileColumn {
 
-    public Lastname(final String parameter) {
-        super(parameter);
-    }
+	/**
+	 * Default constructor.
+	 * 
+	 * @see AbstractFileColumn
+	 *
+	 * @param parameter the parameter
+	 */
+	public Lastname(final String parameter) {
+		super(parameter);
+	}
 
-    @Override
-    public String getFilename() {
-        return "lastname.txt";
-    }
+	/**
+	 * Returns the filename for street names
+	 */
+	@Override
+	public String getFilename() {
+		return "lastname.txt";
+	}
 
 }

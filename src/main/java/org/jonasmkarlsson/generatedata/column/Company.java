@@ -2,13 +2,23 @@ package org.jonasmkarlsson.generatedata.column;
 
 public class Company extends AbstractFileColumn {
 
-    public Company(final String parameter) {
-        super(parameter);
-    }
+	/**
+	 * Default constructor.
+	 * 
+	 * @see AbstractFileColumn
+	 *
+	 * @param parameter the parameter
+	 */
+	public Company(final String parameter) {
+		super(parameter);
+	}
 
-    @Override
-    public String getFilename() {
-        return "company.txt";
-    }
+	/**
+	 * Returns the filename for street names
+	 */
+	@Override
+	public String getFilename() {
+		return "company.txt";
+	}
 
 }

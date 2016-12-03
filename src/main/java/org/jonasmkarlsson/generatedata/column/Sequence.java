@@ -36,110 +36,110 @@ import java.util.regex.Pattern;
 
 public class Sequence extends AbstractColumn {
 
-    private static final Random RANDOM = new Random();
-    private static final char REGEXP_ESCAPE_CHARACTER = '\\';
-    private static final String AVAILABLE_CHARACTER = "abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789-+(){}[]";
-    private static final String REGEXP_FOR_HARD_AND_CURLY_BRACKETS = "^(\\[.*\\])\\{(\\d*)\\}$";
+	private static final Random RANDOM = new Random();
+	private static final char REGEXP_ESCAPE_CHARACTER = '\\';
+	private static final String AVAILABLE_CHARACTER = "abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789-+(){}[]";
+	private static final String REGEXP_FOR_HARD_AND_CURLY_BRACKETS = "^(\\[.*\\])\\{(\\d*)\\}$";
 
-    private Map<Integer, SequenceData> sequenceDataMap = new HashMap<>();
+	private Map<Integer, SequenceData> sequenceDataMap = new HashMap<>();
 
-    public Sequence(final String parameter) {
-        super(parameter);
-        initSequenceData();
-    }
+	public Sequence(final String parameter) {
+		super(parameter);
+		initSequenceData();
+	}
 
-    @Override
-    public String generate() {
-        String generatedValue = "";
-        for (Map.Entry<Integer, SequenceData> entry : sequenceDataMap.entrySet()) {
-            SequenceData sequenceData = entry.getValue();
-            for (int i = 0; i < sequenceData.getNumberOfTimes(); i++) {
-                int n = sequenceData.getCharacters().length();
-                int randomInt = RANDOM.nextInt(n);
-                generatedValue = generatedValue + sequenceData.getCharacters().charAt(randomInt);
-            }
-        }
-        return generatedValue;
-    }
+	@Override
+	public String generate() {
+		String generatedValue = "";
+		for (Map.Entry<Integer, SequenceData> entry : sequenceDataMap.entrySet()) {
+			SequenceData sequenceData = entry.getValue();
+			for (int i = 0; i < sequenceData.getNumberOfTimes(); i++) {
+				int n = sequenceData.getCharacters().length();
+				int randomInt = RANDOM.nextInt(n);
+				generatedValue = generatedValue + sequenceData.getCharacters().charAt(randomInt);
+			}
+		}
+		return generatedValue;
+	}
 
-    /**
-     * 
-     */
-    private void initSequenceData() {
-        int groupNumber = 0;
-        int endIndex;
-        for (int startIndex = 0; startIndex < parameter.length(); startIndex = endIndex + 1) {
-            String regExp;
-            int numberOfTimes = 1;
-            if (parameter.charAt(startIndex) == REGEXP_ESCAPE_CHARACTER) {
-                endIndex = findEscapeCharacter(startIndex + 1);
-                regExp = parameter.substring(startIndex, endIndex + 1);
-            } else {
-                endIndex = findRegExpGroup(startIndex);
-                // Check if the group contains curly brackets {}...
-                regExp = parameter.substring(startIndex, endIndex + 1);
-                Pattern pattern = Pattern.compile(REGEXP_FOR_HARD_AND_CURLY_BRACKETS);
-                Matcher m = pattern.matcher(regExp);
-                while (m.find()) {
-                    regExp = m.group(1);
-                    numberOfTimes = Integer.parseInt(m.group(2));
-                }
+	/**
+	 * 
+	 */
+	private void initSequenceData() {
+		int groupNumber = 0;
+		int endIndex;
+		for (int startIndex = 0; startIndex < parameter.length(); startIndex = endIndex + 1) {
+			String regExp;
+			int numberOfTimes = 1;
+			if (parameter.charAt(startIndex) == REGEXP_ESCAPE_CHARACTER) {
+				endIndex = findEscapeCharacter(startIndex + 1);
+				regExp = parameter.substring(startIndex, endIndex + 1);
+			} else {
+				endIndex = findRegExpGroup(startIndex);
+				// Check if the group contains curly brackets {}...
+				regExp = parameter.substring(startIndex, endIndex + 1);
+				Pattern pattern = Pattern.compile(REGEXP_FOR_HARD_AND_CURLY_BRACKETS);
+				Matcher m = pattern.matcher(regExp);
+				while (m.find()) {
+					regExp = m.group(1);
+					numberOfTimes = Integer.parseInt(m.group(2));
+				}
 
-            }
-            Pattern pattern = Pattern.compile(regExp);
-            Matcher m = pattern.matcher(AVAILABLE_CHARACTER);
-            String characters = "";
-            while (m.find()) {
-                characters = characters + AVAILABLE_CHARACTER.substring(m.start(), m.end());
-            }
-            SequenceData sequenceData = new SequenceData(regExp, characters, numberOfTimes);
-            sequenceDataMap.put(groupNumber, sequenceData);
-            groupNumber++;
-        }
-    }
+			}
+			Pattern pattern = Pattern.compile(regExp);
+			Matcher m = pattern.matcher(AVAILABLE_CHARACTER);
+			String characters = "";
+			while (m.find()) {
+				characters = characters + AVAILABLE_CHARACTER.substring(m.start(), m.end());
+			}
+			SequenceData sequenceData = new SequenceData(regExp, characters, numberOfTimes);
+			sequenceDataMap.put(groupNumber, sequenceData);
+			groupNumber++;
+		}
+	}
 
-    /**
-     * 
-     * @param startIndex
-     * @return
-     */
-    private int findEscapeCharacter(final int startIndex) {
-        int endIndex = startIndex;
-        if (parameter.charAt(startIndex) == REGEXP_ESCAPE_CHARACTER) {
-            endIndex = findEscapeCharacter(startIndex + 1);
-        }
-        return endIndex;
-    }
+	/**
+	 * 
+	 * @param startIndex
+	 * @return
+	 */
+	private int findEscapeCharacter(final int startIndex) {
+		int endIndex = startIndex;
+		if (parameter.charAt(startIndex) == REGEXP_ESCAPE_CHARACTER) {
+			endIndex = findEscapeCharacter(startIndex + 1);
+		}
+		return endIndex;
+	}
 
-    /**
-     * Find and adds a regression expression to the group.
-     * 
-     * @param startIndex
-     * @return
-     */
-    private int findRegExpGroup(final int startIndex) {
-        int returnValue = startIndex;
-        if (parameter.charAt(startIndex) == '[') {
-            returnValue = findRegExpGroup(returnValue, ']');
-            if (returnValue + 1 < parameter.length() && parameter.charAt(returnValue + 1) == '{') {
-                returnValue = findRegExpGroup(returnValue + 2, '}');
-            }
-        }
-        return returnValue;
-    }
+	/**
+	 * Find and adds a regression expression to the group.
+	 * 
+	 * @param startIndex
+	 * @return
+	 */
+	private int findRegExpGroup(final int startIndex) {
+		int returnValue = startIndex;
+		if (parameter.charAt(startIndex) == '[') {
+			returnValue = findRegExpGroup(returnValue, ']');
+			if (returnValue + 1 < parameter.length() && parameter.charAt(returnValue + 1) == '{') {
+				returnValue = findRegExpGroup(returnValue + 2, '}');
+			}
+		}
+		return returnValue;
+	}
 
-    /**
-     * 
-     * @param startIndex
-     * @param c
-     * @return
-     */
-    private int findRegExpGroup(final int startIndex, final char c) {
-        int returnValue = startIndex;
-        while (returnValue < parameter.length() && parameter.charAt(returnValue) != c) {
-            returnValue++;
-        }
-        return returnValue;
-    }
+	/**
+	 * 
+	 * @param startIndex
+	 * @param c
+	 * @return
+	 */
+	private int findRegExpGroup(final int startIndex, final char c) {
+		int returnValue = startIndex;
+		while (returnValue < parameter.length() && parameter.charAt(returnValue) != c) {
+			returnValue++;
+		}
+		return returnValue;
+	}
 
 }

@@ -15,6 +15,7 @@ A simple column reads data from a text file that contains a collection of approp
 - Lastname - Last names of Sweden.
 - Location - Location/Cities of Sweden.
 - Street - Streets of Sweden.
+- Avatar URL - A link to a generated avatar (http://avatars.adorable.io) with the size 100x100 pixels
 
 ##Sequence
 The sequence column are using regular expression to generate the data. 
@@ -39,13 +40,13 @@ Option               | Comment
 #Examples
 
 ##Simple columns
-Generate default number of rows with person data, in this case with first & last name, street, location and company
+Generate default number of rows with person data, in this case with first & last name, street, location, company and avatar URL
 
-> java -jar generate-data.jar -f firstname,lastname,street,location,company
+> java -jar generate-data.jar -f firstname,lastname,street,location,company,avatarurl
 
 If you want to generate a specific number of rows, add the option -n X, where 'X' is a number. In the below example, 25 rows are created.
 
-> java -jar generate-data.jar -f firstname,lastname,street,location,company -n 25
+> java -jar generate-data.jar -f firstname,lastname,street,location,company,avatarurl -n 25
 
 ##Sequence column
 Using the sequencer column to create a sequence of standardized data, accordingly to a regression expression.
