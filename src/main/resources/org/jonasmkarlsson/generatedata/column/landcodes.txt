@@ -1,0 +1,241 @@
+# All information are in the respective language.
+# Defines land code and its land.
+# delimiter = ;
+# phonecountrycode;country
+0093;Afghanistan
+00355;Albanien
+00213;Algeriet
+00684;Amerikanska Samoa
+00376;Andorra
+00244;Angola
+001;Anguilla
+00672;Antarktis
+001;Antigua och Barbuda
+00971;Arabemiraten, Förenade
+0054;Argentina
+00374;Armenien
+00297;Aruba
+00247;Ascension
+0061;Australien
+00994;Azerbajdjan
+001;Bahamas
+00973;Bahrain
+00880;Bangladesh
+001;Barbados
+0032;Belgien
+00501;Belize
+00229;Benin
+001;Bermuda
+00975;Bhutan
+00591;Bolivia
+00387;Bosnien-Herçegovina
+00267;Botswana
+0055;Brasilien
+00673;Brunei Darussalam
+00359;Bulgarien
+00226;Burkina Faso
+00257;Burundi
+001;Caymanöarna
+00236;Centralafrikanska Rep.
+0056;Chile
+0057;Colombia
+00269;Comorerna
+00682;Cooköarna
+00506;Costa Rica
+00357;Cypern
+0045;Danmark
+00246;Diego Garcia
+00253;Djibouti
+001;Dominica
+001;Dominikanska Rep.
+00593;Ecuador
+0020;Egypten
+00240;Ekvatorialguinea
+00225;Elfenbenskusten
+00503;El Salvador
+00291;Eritrea
+00372;Estland
+00251;Etiopien
+00500;Falklandsöarna
+00679;Fiji
+0063;Filippinerna
+00358;Finland
+0033;Frankrike
+00594;Franska Guyana
+00689;Franska Polynesien
+00298;Färöarna
+00241;Gabon
+00220;Gambia
+00995;Georgien
+00233;Ghana
+00350;Gibraltar
+0030;Grekland
+001;Grenada
+00299;Grönland
+00590;Guadeloupe
+001;Guam
+00502;Guatemala
+00224;Guinea
+00245;Guinea-Bissau
+00592;Guyana
+00509;Haiti
+00504;Honduras
+00852;Hongkong
+0091;Indien
+0062;Indonesien
+00964;Irak
+0098;Iran
+00353;Irland
+00354;Island
+00972;Israel
+0039;Italien
+001;Jamaica
+0081;Japan
+00962;Jordanien
+0061;Julön
+001;Jungfruöarna (USA) resp (Britt)
+00855;Kambodja
+00237;Kamerun
+001;Kanada
+0034;Kanarieöarna
+00238;Kap Verde
+007;Kazakstan
+00254;Kenya
+0086;Kina
+00996;Kirgizistan
+00686;Kiribati
+0061;Kokosöarna
+00242;Kongo
+00243;Kongo, Dem. Rep. (Zaire)
+00850;Korea, Nord-
+0082;Korea, Syd-
+00381;Kosovo
+00385;Kroatien
+0053;Kuba
+00965;Kuwait
+00856;Laos
+00266;Lesotho
+00371;Lettland
+00961;Libanon
+00231;Liberia
+00218;Libyen
+00423;Liechtenstein
+00370;Litauen
+00352;Luxemburg
+00853;Macao
+00261;Madagaskar
+00389;Makedonien (FYROM)
+00265;Malawi
+0060;Malaysia
+00960;Maldiverna
+00223;Mali
+00356;Malta
+00212;Marocko
+00692;Marshallöarna
+00596;Martinique
+00222;Mauretanien
+00230;Mauritius
+00269;Mayotte
+0052;Mexiko
+00697;Midwayöarna
+00691;Mikronesien
+00258;Moçambique
+00373;Moldavien
+00377;Monaco
+00976;Mongoliet
+00382;Montenegro
+001;Montserrat
+0095;Myanmar (Burma)
+00264;Namibia
+00674;Nauru
+0031;Nederländerna
+00599;Nederländska Västindien
+00977;Nepal
+00505;Nicaragua
+00227;Niger
+00234;Nigeria
+00683;Niue
+00672;Norfolkön
+0047;Norge
+001;Norra Marianaöarna
+00687;Nya Kaledonien
+0064;Nya Zeeland
+00968;Oman
+0092;Pakistan
+00680;Palau
+00970;Palestina
+00507;Panama
+00675;Papua Nya Guinea
+00595;Paraguay
+0051;Peru
+0048;Polen
+00351;Portugal
+001;Puerto Rico
+00974;Qatar
+00262;Reunion
+0040;Rumänien
+00250;Rwanda
+007;Ryssland
+00212;Sahara, Västra
+00677;Salomonöarna
+00685;Samoa
+00378;San Marino
+00239;São Tomé och Principe
+00966;Saudiarabien
+0041;Schweiz
+00221;Senegal
+00381;Serbien
+00248;Seychellerna
+00232;Sierra Leone
+0065;Singapore
+00421;Slovakien
+00386;Slovenien
+00252;Somalia
+0034;Spanien
+0094;Sri Lanka
+00290;S:t Helena
+001;S:t Kitts och Nevis
+001;S:t Lucia
+00508;S:t Pierre & Miquelon
+001;S:t Vincent och Grenadinerna
+0044;Storbritannien och Nordirland
+00249;Sudan
+00597;Surinam
+0046;Sverige
+00268;Swaziland
+0027;Sydafrika
+00963;Syrien
+00992;Tadjikistan
+00886;Taiwan
+00255;Tanzania
+00235;Tchad
+0066;Thailand
+00420;Tjeckien
+00228;Togo
+00690;Tokelau
+00676;Tonga
+001;Trinidad och Tobago
+00216;Tunisien
+0090;Turkiet
+00993;Turkmenistan
+001;Turks- och Caicosöarna
+00688;Tuvalu
+0049;Tyskland
+00256;Uganda
+00380;Ukraina
+0036;Ungern
+00598;Uruguay
+001;USA (inkl. Alaska, Hawaii)
+00998;Uzbekistan
+00678;Vanuatu
+0039;Vatikanen
+0058;Venezuela
+0084;Vietnam
+00375;Vitryssland
+00695;Wake-ön
+00681;Wallis och Futunaöarna
+00967;Yemen
+00260;Zambia
+00263;Zimbabwe
+0043;Österrike
+00670;Östra Timor
