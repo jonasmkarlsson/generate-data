@@ -4,16 +4,18 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.security.SecureRandom;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public abstract class AbstractFileColumn extends AbstractColumn {
 
-	private static final Logger LOGGER = Logger.getLogger(AbstractFileColumn.class);
-	private static final Random RANDOM = new Random();
+	private static final Logger LOGGER = LogManager.getLogger(AbstractFileColumn.class);
+	private static final SecureRandom RANDOM = new SecureRandom();
 	private static final String FILE_COMMENT_STARTS_WITH_CHARACTER = "#";
 
 	private String[] fileLines = new String[0];
@@ -39,7 +41,7 @@ public abstract class AbstractFileColumn extends AbstractColumn {
 		InputStream is = this.getClass().getResourceAsStream(getFilename());
 		BufferedReader bufferedReader = null;
 		try {
-			bufferedReader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+			bufferedReader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
 			this.fileLines = readLines(bufferedReader);
 			is.close();
 		} catch (NullPointerException npe) {

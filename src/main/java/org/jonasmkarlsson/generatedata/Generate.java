@@ -5,12 +5,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.jonasmkarlsson.generatedata.column.AbstractColumn;
 
 public class Generate {
 
-	private static final Logger LOGGER = Logger.getLogger(Generate.class);
+	private static final Logger LOGGER = LogManager.getLogger(Generate.class);
 	private static final String PACKAGE_NAME_FOR_COLUMNS = "org.jonasmkarlsson.generatedata.column.";
 	private static final String REGEXP_FOR_COLUMN_WITH_PARAMETER = "(\\w*)\\((.*)\\)";
 
@@ -48,7 +49,7 @@ public class Generate {
 		if (numberOfLines > 0) {
 			lines = new String[numberOfLines];
 			for (int i = 0; i < numberOfLines; i++) {
-				lines[i] = new String();
+				lines[i] = "";
 				for (int j = 0; j < columns.length; j++) {
 					lines[i] = lines[i] + columns[j].generate() + delimiter;
 				}
@@ -77,7 +78,7 @@ public class Generate {
 				if (LOGGER.isDebugEnabled()) {
 					LOGGER.debug("Encountered exception while creating column '" + columns[i] + "':", e);
 				}
-				LOGGER.info("Encountered exception while creating column '" + columns[i] + "'. See log file for more information.");
+				LOGGER.info("Encountered exception while creating column '%s'. See log file for more information.", columns[i]);
 				throw new ClassNotFoundException();
 			}
 		}
@@ -100,6 +101,7 @@ public class Generate {
 	 * @throws InstantiationException
 	 * @throws IllegalArgumentException
 	 */
+	@SuppressWarnings("java:S4784")
 	private static AbstractColumn createColumn(final String column)
 	        throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
 		String parameter = "";
@@ -116,6 +118,6 @@ public class Generate {
 		// Dynamically create an instance of object...
 		Class<?> clazz = Class.forName(PACKAGE_NAME_FOR_COLUMNS + className);
 		Constructor<?> ctor = clazz.getConstructor(String.class);
-		return (AbstractColumn) ctor.newInstance(new Object[] { parameter });
+		return (AbstractColumn) ctor.newInstance(parameter);
 	}
 }

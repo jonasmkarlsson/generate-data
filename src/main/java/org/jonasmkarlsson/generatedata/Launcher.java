@@ -12,10 +12,11 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class Launcher {
-	private static final Logger LOGGER = Logger.getLogger(Launcher.class);
+	private static final Logger LOGGER = LogManager.getLogger(Launcher.class);
 
 	private final Properties properties;
 	private final String application;
@@ -66,7 +67,7 @@ public class Launcher {
 			if (LOGGER.isDebugEnabled()) {
 				LOGGER.debug("Encountered exception while reading property file '" + Constants.PROPERTY_FILE + "':", e);
 			}
-			LOGGER.info("Encountered exception while reading property file '" + Constants.PROPERTY_FILE + "'. See log file for more information.");
+			LOGGER.info("Encountered exception while reading property file '%s'. See log file for more information.", Constants.PROPERTY_FILE);
 		}
 		return prop;
 	}
@@ -86,8 +87,7 @@ public class Launcher {
 			numberOfLines = Integer.parseInt(numberOfLinesOptionValue);
 		} catch (NumberFormatException nfe) {
 			if (LOGGER.isDebugEnabled()) {
-				LOGGER.debug("Could not convert value '" + numberOfLinesOptionValue + "' to an int. Using default value '" + Constants.DEFAULT_NUMBER_OF_LINES
-				        + "'.");
+				LOGGER.debug("Could not convert value '%s' to an int. Using default value '%d'", numberOfLinesOptionValue, Constants.DEFAULT_NUMBER_OF_LINES);
 			}
 		}
 

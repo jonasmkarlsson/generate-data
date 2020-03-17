@@ -2,8 +2,8 @@ package org.jonasmkarlsson.generatedata.column;
 
 public class SequenceData {
 
-    private String regexp = new String("");
-    private String characters = new String("");
+    private String regexp = "";
+    private String characters = "";
     private int numberOfTimes = 0;
 
     public SequenceData(final String regExp, final String characters, final int numberOfTimes) {

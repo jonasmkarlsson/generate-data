@@ -11,17 +11,15 @@ public class Main {
 	 * Default constructor
 	 */
 	@SuppressWarnings("all")
-	public Main() {
-
-	}
+	public Main() { }
 
 	/**
 	 * Main executable method .
 	 * 
 	 * @param commandLineArguments the command line arguments.
 	 */
-	public static void main(final String[] commandLineArguments) {
-		new Launcher().run(commandLineArguments);
+	@SuppressWarnings("java:S4823")
+	public static void main(final String[] commandLineArguments) { new Launcher().run(commandLineArguments);
 	}
 
 }

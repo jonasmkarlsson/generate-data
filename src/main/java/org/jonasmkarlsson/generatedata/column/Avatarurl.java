@@ -2,9 +2,10 @@ package org.jonasmkarlsson.generatedata.column;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
+import java.security.SecureRandom;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jonasmkarlsson.generatedata.Constants;
 
 /**
@@ -14,10 +15,10 @@ import org.jonasmkarlsson.generatedata.Constants;
 
 public class Avatarurl extends AbstractColumn {
 
-	private static final Random RANDOM = new Random();
-	private static final Logger LOGGER = Logger.getLogger(Avatarurl.class);
+	private static final SecureRandom RANDOM = new SecureRandom();
+	private static final Logger LOGGER = LogManager.getLogger(Avatarurl.class);
 
-	private Map<Integer, String> avatarUrlDataMap = new HashMap<Integer, String>();
+	private Map<Integer, String> avatarUrlDataMap = new HashMap<>();
 	private int pixelSize = 100;
 
 	public Avatarurl(final String parameter) {
@@ -44,7 +45,7 @@ public class Avatarurl extends AbstractColumn {
 			parameterInteger = Integer.parseInt(parameter);
 		} catch (NumberFormatException nfe) {
 			if (LOGGER.isDebugEnabled()) {
-				LOGGER.debug("Could not convert value '" + parameter + "' to an int. Using default value '" + Constants.DEFAULT_NUMBER_OF_AVATAR_URLS + "'.");
+				LOGGER.debug("Could not convert value '%s' to an int. Using default value '%d'.", parameter, Constants.DEFAULT_NUMBER_OF_AVATAR_URLS);
 			}
 		}
 

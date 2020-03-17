@@ -28,15 +28,15 @@ package org.jonasmkarlsson.generatedata.column;
  * </p>
  */
 
+import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Sequence extends AbstractColumn {
 
-	private static final Random RANDOM = new Random();
+	private static final SecureRandom RANDOM = new SecureRandom();
 	private static final char REGEXP_ESCAPE_CHARACTER = '\\';
 	private static final String AVAILABLE_CHARACTER = "abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789-+(){}[]";
 	private static final String REGEXP_FOR_HARD_AND_CURLY_BRACKETS = "^(\\[.*\\])\\{(\\d*)\\}$";
@@ -48,23 +48,28 @@ public class Sequence extends AbstractColumn {
 		initSequenceData();
 	}
 
+	/**
+	 * Generate a string
+	 * @return a String
+	 */
 	@Override
 	public String generate() {
-		String generatedValue = "";
+		StringBuilder builder = new StringBuilder();
 		for (Map.Entry<Integer, SequenceData> entry : sequenceDataMap.entrySet()) {
 			SequenceData sequenceData = entry.getValue();
 			for (int i = 0; i < sequenceData.getNumberOfTimes(); i++) {
 				int n = sequenceData.getCharacters().length();
 				int randomInt = RANDOM.nextInt(n);
-				generatedValue = generatedValue + sequenceData.getCharacters().charAt(randomInt);
+				builder.append(sequenceData.getCharacters().charAt(randomInt));
 			}
 		}
-		return generatedValue;
+		return builder.toString();
 	}
 
 	/**
-	 * 
+	 * Initialize sequence data
 	 */
+	@SuppressWarnings("java:S4784")
 	private void initSequenceData() {
 		int groupNumber = 0;
 		int endIndex;
@@ -88,18 +93,18 @@ public class Sequence extends AbstractColumn {
 			}
 			Pattern pattern = Pattern.compile(regExp);
 			Matcher m = pattern.matcher(AVAILABLE_CHARACTER);
-			String characters = "";
+			StringBuilder builder = new StringBuilder();
 			while (m.find()) {
-				characters = characters + AVAILABLE_CHARACTER.substring(m.start(), m.end());
+				builder.append(AVAILABLE_CHARACTER.substring(m.start(), m.end()));
 			}
-			SequenceData sequenceData = new SequenceData(regExp, characters, numberOfTimes);
+			SequenceData sequenceData = new SequenceData(regExp, builder.toString(), numberOfTimes);
 			sequenceDataMap.put(groupNumber, sequenceData);
 			groupNumber++;
 		}
 	}
 
 	/**
-	 * 
+	 *  Find the escape character from a given parameter start index
 	 * @param startIndex
 	 * @return
 	 */
